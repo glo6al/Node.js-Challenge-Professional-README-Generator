@@ -3,58 +3,100 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-//const questions = ['Application Title:', 'Application Description:', 'Application Features:', 'How to use:', 'Version'];
-
+//prompt user to input values for questions array
 inquirer.prompt(
     [
         {
             type: 'title',
             message: 'What is your project title?',
-            name: 'Project Title',
+            name: 'title',
             validate: (value) => {if (value){return true} else {return 'Please enter a project title.'}},
         },
         {
             type: 'input',
             message: 'Describe your project.',
-            name: 'Project Description',
+            name: 'description',
             validate: (value) => {if (value){return true} else {return 'Please enter a project description.'}},
         },
         {
             type: 'input',
             message: 'How do you install your project?',
-            name: 'Installation Instructions',
+            name: 'installation',
             validate: (value) => {if (value){return true} else {return 'Please enter installation instructions.'}},
         },
         {
             type: 'input',
             message: 'How should someone use your project?',
-            name: 'Usage Instructions',
+            name: 'usage',
             validate: (value) => {if (value){return true} else {return 'Please enter usage instructions.'}},
         },
         {
             type: 'list',
             message: 'What license do you?',
-            name: 'Project License',
+            name: 'license',
             choices: ['MIT', 'GPL', 'Apache', 'GNU', 'N/A'],
             validate: (value) => {if (value){return true} else {return 'Please choose at least one license.'}},
         },
         {
             type: 'input',
+            message: 'How can others contribute to this project?',
+            name: 'contribute',
+            validate: (value) => {if (value){return true} else {return 'Please enter instructions on how others can contribute to this project.'}},
+        },
+        {
+            type: 'input',
             message: 'What is your Github username?',
-            name: 'Github Username',
+            name: 'github',
             validate: (value) => {if (value){return true} else {return 'Please enter your Github username.'}},
         },
         {
             type: 'input',
             message: 'What is your email address?',
-            name: 'Email',
+            name: 'email',
             validate: (value) => {if (value){return true} else {return 'Please enter your email.'}},
         },
     ]
-);
+//function create template for README file
+).then(({
+    title,
+    description,
+    installation,
+    usage,
+    license,
+    contribute,
+    github,
+    email
+
+}) => {
+const template = `
+# ${title}
+##Table of Contents
+
+*[Description](#description)
+*[Installation Instructions](#installation)
+*[Usage Instructions](#usage)
+*[License](#license)
+*[How to Contribute]{#contribute}
+*[GitHub](#github)
+*[Email](#email)
+
+##Description
+${description}
+##Installation Instructions
+${installation}
+##Usage Instructions
+${usage}
+##License
+${license}
+##How to Contribute
+${contribute}
+##Questions? Contact:
+${github}
+${email}`
+})
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+//function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {}
