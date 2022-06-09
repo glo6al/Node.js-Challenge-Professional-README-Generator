@@ -64,6 +64,7 @@ inquirer.prompt(
     ]
 //function to create template for README file
 ).then(({
+    //object to hold key/value pairs for template
     title,
     description,
     installation,
@@ -78,14 +79,14 @@ const template = `
 # ${title}
 ##Table of Contents
 
-*[Description](#description)
-*[Installation Instructions](#installation)
-*[Usage Instructions](#usage)
-*[License](#license)
-*[How to Contribute]{#contribute}
-*[How to Test]{#test}
-*[GitHub](#github)
-*[Email](#email)
+-[Description](#description)
+-[Installation Instructions](#installation)
+-[Usage Instructions](#usage)
+-[License](#license)
+-[How to Contribute]{#contribute}
+-[How to Test]{#test}
+-[GitHub](#github)
+-[Email](#email)
 
 ##Description
 ${description}
@@ -100,15 +101,30 @@ ${contribute}
 ##How to Test
 ${test}
 ##Questions? Contact:
-${github}
-${email}`
+-GitHub: ${github}
+-Email: ${email}`
+
+//function to pass parameters for readme file
+writeToFile(title, template);
 })
 
 // TODO: Create a function to write README file
-//function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`, data,(err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log('Success! Your README now been generated.')
+    })
+}
 
-// TODO: Create a function to initialize app
-function init() {}
 
-// Function call to initialize app
-init();
+
+
+
+
+// // TODO: Create a function to initialize app
+// function init() {}
+
+// // Function call to initialize app
+// init();
