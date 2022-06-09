@@ -45,6 +45,12 @@ inquirer.prompt(
         },
         {
             type: 'input',
+            message: 'How can others test this project?',
+            name: 'test',
+            validate: (value) => {if (value){return true} else {return 'Please enter instructions on how others can test this project.'}},
+        },
+        {
+            type: 'input',
             message: 'What is your Github username?',
             name: 'github',
             validate: (value) => {if (value){return true} else {return 'Please enter your Github username.'}},
@@ -56,7 +62,7 @@ inquirer.prompt(
             validate: (value) => {if (value){return true} else {return 'Please enter your email.'}},
         },
     ]
-//function create template for README file
+//function to create template for README file
 ).then(({
     title,
     description,
@@ -77,6 +83,7 @@ const template = `
 *[Usage Instructions](#usage)
 *[License](#license)
 *[How to Contribute]{#contribute}
+*[How to Test]{#test}
 *[GitHub](#github)
 *[Email](#email)
 
@@ -90,6 +97,8 @@ ${usage}
 ${license}
 ##How to Contribute
 ${contribute}
+##How to Test
+${test}
 ##Questions? Contact:
 ${github}
 ${email}`
