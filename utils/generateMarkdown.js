@@ -16,6 +16,9 @@ function renderLicenseBadge(license) {
   else if (license === 'MPL') {
     return `![License: ${license}](https://img.shields.io/badge/license-Mozilla%20PL%202.0-orange)`;
   }
+  else if (license === 'Other') {
+    return `This project is licensed elsewhere.`
+  }
 };
 
 // TODO: Create a function that returns the license link
@@ -36,16 +39,41 @@ function renderLicenseLink(license) {
   else if (license === 'MPL') {
     return `[${license}](https://spdx.org/licenses/MPL-2.0.html)`;
   }
+  else if (license === 'Other') {
+    return '';
+  }
 }
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-
-`;
+function renderLicenseSection(license) {
+  if (!license) {
+    return '';
+  }
+  else if (license) {
+    return `Licensed with ${renderLicenseSection(data.license)}`;
+  }
 }
 
-module.exports = generateMarkdown;
+const renderSection = renderLicenseSection();
+const renderLink = renderLicenseLink ();
+const renderBadge = renderLicenseBadge ();
+
+module.exports = {
+  renderSection: renderSection,
+  renderLink: renderLink,
+  renderBadge: renderBadge,
+}
+
+
+
+
+
+
+// // TODO: Create a function to generate markdown for README
+// function generateMarkdown(data) {
+//   return `# ${data.title}
+
+// `;
+// }
+
+//module.exports = generateMarkdown;

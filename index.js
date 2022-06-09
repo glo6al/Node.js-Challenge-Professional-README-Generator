@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { renderSection } = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 //prompt user to input values for questions array
@@ -34,7 +35,7 @@ inquirer.prompt(
             type: 'list',
             message: 'What license do you?',
             name: 'license',
-            choices: ['MIT', 'GPL', 'Apache', 'GNU', 'N/A'],
+            choices: ['MIT', 'GNU', 'Apache', 'MPL', 'Other'],
             validate: (value) => {if (value){return true} else {return 'Please choose at least one license.'}},
         },
         {
@@ -76,6 +77,8 @@ inquirer.prompt(
 
 }) => {
 const template = `
+${renderBadge}
+
 # ${title}
 ##Table of Contents
 
@@ -94,8 +97,7 @@ ${description}
 ${installation}
 ##Usage Instructions
 ${usage}
-##License
-${license}
+${renderSection}
 ##How to Contribute
 ${contribute}
 ##How to Test
