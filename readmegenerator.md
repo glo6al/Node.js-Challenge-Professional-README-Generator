@@ -1,7 +1,4 @@
 
-Repository URL: https://github.com/glo6al/potential-engima-glo6al.git
-----------------------------------------------------------------
-
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 # ReadmeGenerator
 ## Table of Contents
@@ -13,7 +10,7 @@ Repository URL: https://github.com/glo6al/potential-engima-glo6al.git
 - [How to Test](#how-to-test)
 - [Contact](#contact)
 ## Description
-This project is a README generator that will help create a professional README for your next coding project. The README will include all of the necessary sections and information that you will need to included in order to make your project stand out. This README file was generated using this generator.
+This project is a README generator that will help create a professional README for your next coding project. The README will include all of the necessary sections and information that you will need to included in order to make your project stand out. This README was generated using this generator.
 ## Installation Instructions
 In order to install this README generator, you will need to have Node.js installed on your computer. Once you have Node.js installed, you can clone this repository and run the following command: node index.js
 ## Usage Instructions
@@ -25,5 +22,5 @@ MIT
 ## How to Test
 In order to test this README generator, you can simply run the command 'node index.js' and check to see if the generated README file is in the correct format.
 ## Contact:
-- GitHub: https://github.com/glo6al
+- GitHub: glo6al
 - Email: towers.a@gmail.com
